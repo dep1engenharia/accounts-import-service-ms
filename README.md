@@ -138,6 +138,9 @@ MS accounts-import-service OBTAINS THE ACCOUNTS FROM THE KAFKA TOPIC AND ENRICH 
 THE DATA FROM ALL ACCOUNTS IS SAVED FOR LATER AUTOMATIONS, LIKE SPY AND ATTACK REAL USERS.
 ![img_4.png](img_4.png)
 
+KAFKA-UI TOPIC ACCOUNTS "There's no need to encrypt the sensitive information in this use case"
+![img_18.png](img_18.png)
+
 BEST PART
 ![img_8.png](img_8.png)
 ![img_9.png](img_9.png)
