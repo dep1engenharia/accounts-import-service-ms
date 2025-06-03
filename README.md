@@ -45,6 +45,7 @@ accounts-import-service → MariaDB (planet seeding)
     Consumer reads from Kafka → writes to JSON → updates database.
 
 Kafka’s buffering allows you to generate thousands of accounts at once (e.g., morning) and seed planets later (e.g., afternoon) without overloading the DB.
+
 Why Use This Framework?
 
     Fully Automated: No manual steps for account registration or planet seeding.
@@ -69,7 +70,7 @@ Prerequisites
 
     (Adjust in application.properties if needed.)
 
-    Firefox (only required if running Selenium locally outside of Docker).
+    geckodriver.exe Included in the project root
 
 Quick Setup
 
@@ -78,18 +79,11 @@ Quick Setup
 git clone https://github.com/dep1engenharia/accounts-import-service-ms.git
 cd accounts-import-service-ms
 
-Configure the database connection
+git clone https://github.com/dep1engenharia/ogamex-accounts-creator-ms.git
+cd ogamex-accounts-creator-ms
 
-    Open accounts-import-service/src/main/resources/application.properties.
-
-    Ensure the JDBC URL, username, and password match your MariaDB instance:
-
-    spring.datasource.url=jdbc:mysql://localhost:3306/laravel
-    spring.datasource.username=root
-    spring.datasource.password=toor
-
-(Optional) OGameX Production Note
-If you plan to run this framework against the OGameX production-style setup, you must temporarily map MariaDB’s container port to a non-standard host port. For example, in your Docker Compose file, define the ogamex-db service as follows:
+(Optional) OGameX Production
+If you plan to run this framework against the OGameX production-style setup, you must temporarily specify the MariaDB’s container ports. For example, in your Docker Compose file, define the ogamex-db service as follows:
 
 # MariaDB Service (for OGameX prod compatibility)
 ogamex-db:
@@ -116,41 +110,7 @@ Then point application.properties to jdbc:mysql://localhost:13306/laravel.
 
 Start all services
 
-docker-compose -f docker-compose.prod.yml up --build
-
-    This will spin up:
-
-        Zookeeper (port 2181)
-
-        Kafka Broker (host 9092, container 29092)
-
-        Kafka-UI at http://localhost:8086
-
-        accounts-import-service (consumer)
-
-The consumer will immediately begin listening on the accounts topic.
-
-Generate accounts (Producer)
-
-    Open a separate terminal and navigate to:
-
-cd ogame-account-creator
-
-Build and run the producer:
-
-        mvn clean package
-        java -jar target/ogame-account-creator-0.0.1-SNAPSHOT.jar \
-          --kafka.bootstrapServers=localhost:9092 \
-          --producer.topic=accounts \
-          --parallelism=4
-
-        Adjust --parallelism (max 4) to control how many Firefox instances run in parallel.
-
-    Verify planet seeding
-
-        Check created_accounts.json in accounts-import-service’s root folder for new accounts.
-
-        Open Kafka-UI at http://localhost:8086 to monitor the accounts topic and consumer group lag.
+Use this curl or on your terminal and start creating accounts.
 
 cURL Example
 
@@ -161,7 +121,44 @@ curl --location \
 
     count=500: Number of accounts to generate.
 
-    ip=192.168.1.21: (Optional) IP address to pass to the registration flow.
+    ip=192.168.1.21: The IP address of the machine where Ogamex is running
+
+These micro-services are independent of the OgameX tech Stack.
+
+Screenshots
+CREATING ACCOUNTS VIA POSTMAN
+![img_2.png](img_2.png)
+
+MS ogame-account-creator RECEIVES POSTMAN REQUEST, CREATES THE ACCOUNTS AND SENDS THEM TO THE KAFKA TOPIC
+![img_1.png](img_1.png)
+
+MS accounts-import-service OBTAINS THE ACCOUNTS FROM THE KAFKA TOPIC AND ENRICH THE PLANETS THEM WITH ALL TYPE OF RESOURCES
+![img_3.png](img_3.png)
+
+THE DATA FROM ALL ACCOUNTS IS SAVED FOR LATER AUTOMATIONS, LIKE SPY AND ATTACK REAL USERS.
+![img_4.png](img_4.png)
+
+BEST PART
+![img_8.png](img_8.png)
+![img_9.png](img_9.png)
+![img_10.png](img_10.png)
+![img_5.png](img_5.png)
+![img_6.png](img_6.png)
+![img_7.png](img_7.png)
+
+MILITARY
+![img_11.png](img_11.png)
+![img_12.png](img_12.png)
+
+PLANET DETAILS
+![img_13.png](img_13.png)
+![img_14.png](img_14.png)
+![img_15.png](img_15.png)
+![img_16.png](img_16.png)
+![img_17.png](img_17.png)
+
+
+Special thanks to @lanedirt for creating such a great project!
 
 License
 
