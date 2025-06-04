@@ -141,17 +141,19 @@ THE DATA FROM ALL ACCOUNTS IS SAVED FOR LATER AUTOMATIONS, LIKE SPY AND ATTACK R
 KAFKA-UI TOPIC ACCOUNTS "There's no need to encrypt the sensitive information in this use case"
 ![img_18.png](img_18.png)
 
+
 BEST PART
-![img_8.png](img_8.png)
-![img_9.png](img_9.png)
-![img_10.png](img_10.png)
-![img_5.png](img_5.png)
-![img_6.png](img_6.png)
-![img_7.png](img_7.png)
+![image](https://github.com/user-attachments/assets/752aee89-0b52-471f-b52d-7959796f739e)
+![image](https://github.com/user-attachments/assets/7d303e0e-05bb-4c81-8f42-3d0ea04b7900)
+![image](https://github.com/user-attachments/assets/ec8a65cd-cbdc-4c89-b82d-56d2e7a882ff)
+![image](https://github.com/user-attachments/assets/78c484bf-2f9a-4eb6-85e4-fe1424968c1a)
+![image](https://github.com/user-attachments/assets/4cbf85ac-9bcc-49f1-9fb7-b925aed23f30)
+
+
+
 
 MILITARY
-![img_11.png](img_11.png)
-![img_12.png](img_12.png)
+![image](https://github.com/user-attachments/assets/a40c4d89-c565-444a-a2f8-ae12df3dfdf4)
 
 PLANET DETAILS
 ![img_13.png](img_13.png)
@@ -159,6 +161,8 @@ PLANET DETAILS
 ![img_15.png](img_15.png)
 ![img_16.png](img_16.png)
 ![img_17.png](img_17.png)
+
+
 
 
 Special thanks to @lanedirt for creating such a great project!
